@@ -1,47 +1,31 @@
 <template>
-  <div class="test">
-    <input type="checkbox" name="m" id="m" v-model="success">
-
-    <p :class="cls">{{ hello }}</p>
-    <input type="password" name="" id="" v-model="lname">{{ message }}
-
+  <div>
+    <p>{{ firstName }}</p>
+    <button @click="changeFirstName">Changer le prénom</button>
   </div>
 </template>
- 
+
 <script>
+export default {
+  name : "TestComponent",
 
-import Vue  from 'vue';
+  data() {
+    return {
+      firstName: 'John',
+      lastName: 'Doe'
+    };
+  },
+  computed: {
+    fullName() {
+      console.log("Bonjour")
+      return this.firstName + ' ' + this.lastName;
+    }
+  },
+  methods: {
+    changeFirstName() {
 
-new Vue({
-  el: '#app',
-  data: {
-    items: ['Element 1', 'Element 2', 'Element 3'],
-    shoppingCart: [
-                { label: 'Pommes', cost: 6 },
-                { label: 'Bananes', cost: 2 },
-                { label: 'Noix de coco', cost: 8 }
-            ]
+      this.firstName = 'Jane';
+    }
   }
-});
-
+};
 </script>
-
-<style>
-.red, .blue{
-    background-color:red;
-    color : blue;
-    width: 40% ;
-    height:50px;
-    margin-left: 300px;
-    padding-top: 20px;
-}
-
-.blue{
-    background-color:blue;
-    color : red;
-    width: 40%;
-    height:50px;
-    margin-left:300px;
-    padding-top: 20px;
-}
-</style>
